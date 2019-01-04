@@ -14,7 +14,6 @@ export const getGif = id => {
         return res.json();
       })
       .then(json => {
-        console.log(json.data);
         resolve(json.data);
       })
       .catch(err => {
