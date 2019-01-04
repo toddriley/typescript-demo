@@ -1,6 +1,19 @@
 import React from "react";
 
-const Select = props => {
+interface Gif {
+  id: string;
+  name: string;
+}
+
+interface SelectProps {
+  slug: string;
+  name: string;
+  value: string;
+  onChange: (e: React.ChangeEvent<HTMLSelectElement>) => void;
+  gifs: Gif[];
+}
+
+const Select = (props: SelectProps) => {
   return (
     <div className="select__wrapper">
       <label className="select__label" htmlFor={props.slug}>
