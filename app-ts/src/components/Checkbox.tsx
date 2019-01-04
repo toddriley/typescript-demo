@@ -1,6 +1,13 @@
 import React from "react";
 
-const Checkbox = props => {
+interface CheckboxProps {
+  slug: string;
+  name: string;
+  isChecked: boolean;
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+}
+
+const Checkbox = (props: CheckboxProps) => {
   return (
     <div className="checkbox">
       <label htmlFor={props.slug}>
