@@ -11,8 +11,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-	"eject": "react-scripts eject",
-	"formatwrite": "prettier --write 'src/**/*.js' 'src/**/*.ts?(x)'"
+    "eject": "react-scripts eject",
+    "formatwrite": "prettier --write 'src/**/*.js' 'src/**/*.ts?(x)'"
   },
   "eslintConfig": {
     "extends": "react-app"
