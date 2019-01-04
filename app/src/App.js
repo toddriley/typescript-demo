@@ -1,7 +1,6 @@
 import React, { Component } from "react";
-import { gifIds } from "./utils/gifs";
-import Select from "./components/Select";
-import Checkbox from "./components/Checkbox";
+import Main from "./components/Main";
+import Sidebar from "./components/Sidebar";
 import { getGif } from "./utils/api";
 import "./App.css";
 
@@ -46,80 +45,23 @@ class App extends Component {
     }
   };
   render() {
-    const gifs = [];
-    const { selectedId } = this.state;
-    let totalSize = 0;
-    if (selectedId && this.state.idsToData[selectedId]) {
-      for (const gif of this.state.idsToData[selectedId]) {
-        if (this.state.isOriginal) {
-          const gifSize = gif.images.original.size;
-          gifs.push({
-            ...gif.images.original,
-            key: gifSize + "o"
-          });
-          totalSize += gifSize;
-        }
-        if (this.state.isDownsized) {
-          const gifSize = gif.images.downsized.size;
-          gifs.push({
-            ...gif.images.downsized,
-            key: gifSize + "d"
-          });
-          totalSize += gifSize;
-        }
-        if (this.state.isHd) {
-          const gifSize = gif.images.hd.size;
-          gifs.push({ ...gif.images.hd, key: gifSize + "hd" });
-          totalSize += gifSize;
-        }
-      }
-    }
     return (
       <div className="app">
-        <div className="app__sidebar">
-          <h1 className="app__heading">Giphy API Tester</h1>
-          <Select
-            slug="gifs"
-            name="Gif"
-            gifs={gifIds}
-            value={this.state.selectedId}
-            onChange={this.handleSelectChange}
-          />
-          <div className="checkbox__wrapper">
-            <label className="checkbox__label">Quality:</label>
-            <Checkbox
-              name={"Original"}
-              slug={"isOriginal"}
-              isChecked={this.state.isOriginal}
-              onChange={this.handleCheckboxChange}
-            />
-            <Checkbox
-              name={"HD"}
-              slug={"isHd"}
-              isChecked={this.state.isHd}
-              onChange={this.handleCheckboxChange}
-            />
-            <Checkbox
-              name={"Downsized"}
-              slug={"isDownsized"}
-              isChecked={this.state.isDownsized}
-              onChange={this.handleCheckboxChange}
-            />
-          </div>
-        </div>
-        <div className="app__main">
-          <div className="main">
-            <h1>Total size: {totalSize}</h1>
-            {gifs.map(gif => {
-              return (
-                <div key={gif.key}>
-                  <img src={gif.url} alt={gif.url} />
-                  <p>{gif.size}</p>
-                </div>
-              );
-            })}
-          </div>
-        </div>
+        <Sidebar
+          selectedId={this.state.selectedId}
+          onSelectChange={this.handleSelectChange}
+          onCheckboxChange={this.handleCheckboxChange}
+          isOriginal={this.state.isOriginal}
+          isHd={this.state.isHd}
+          isDownsized={this.state.isDownsized}
+        />
+        <Main
+          selectedId={this.state.selectedId}
+          idsToData={this.state.idsToData}
+          isOriginal={this.state.isOriginal}
+          isHd={this.state.isHd}
+          isDownsized={this.state.isDownsized}
+        />
       </div>
     );
   }
