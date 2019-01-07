@@ -3,7 +3,7 @@ interface ApiResponse {
   // There are other fields we don't care about for this example
 }
 
-interface ApiData {
+export interface ApiData {
   images: ApiImage[];
   // There are other fields we don't care about for this example
 }
