@@ -3,7 +3,15 @@ import { gifIds } from "../utils/gifs";
 import Select from "./Select";
 import Checkbox from "./Checkbox";
 
-const Sidebar = props => {
+interface SidebarProps {
+  isOriginal: boolean;
+  isHd: boolean;
+  isDownsized: boolean;
+  selectedId: string;
+  onSelectChange: (event: React.ChangeEvent<HTMLSelectElement>) => any;
+  onCheckboxChange: (event: React.ChangeEvent<HTMLInputElement>) => any;
+}
+const Sidebar = (props: SidebarProps) => {
   return (
     <div className="sidebar">
       <h1>Giphy API Tester</h1>
