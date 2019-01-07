@@ -1,30 +1,56 @@
-import React, { Component } from "react";
+import * as React from "react";
 import Main from "./components/Main";
 import Sidebar from "./components/Sidebar";
 import { getGif } from "./utils/api";
 import "./App.css";
 
-class App extends Component {
-  constructor(props) {
+interface AppProps {}
+interface AppState {
+  selectedId: string;
+  checkboxes: {
+    isOriginal: boolean;
+    isHd: boolean;
+    isDownsized: boolean;
+  };
+  idsToData: any;
+}
+class App extends React.Component<AppProps, AppState> {
+  constructor(props: AppProps) {
     super(props);
     this.state = {
       selectedId: "",
-      isOriginal: false,
-      isHd: false,
-      isDownsized: false,
+      checkboxes: {
+        isOriginal: false,
+        isHd: false,
+        isDownsized: false
+      },
       idsToData: {}
     };
   }
-  handleCheckboxChange = event => {
+  handleCheckboxChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const target = event.target;
-    const value = target.type === "checkbox" ? target.checked : target.value;
-    const name = target.name;
+    if (target.type !== "checkbox") {
+      console.error("Expected input type to be checkbox");
+    } else {
+      const value = target.checked;
+      const name = target.name;
 
-    this.setState({
-      [name]: value
-    });
+      /**
+       * This is a tricky one. `value` is a boolean, but our state contains non-booleans
+       * such as `selectedId` and `idsToData`. If we group together all of our boolean
+       * state variables into a new sub-object (`checkboxes` in this case) that cannot
+       * contain non-booleans, then we can make the TypeScript compiler happy using
+       * this index-signature syntax.
+       */
+      this.setState({
+        checkboxes: {
+          ...this.state.checkboxes,
+          [name]: value
+        }
+      });
+    }
   };
-  handleSelectChange = event => {
+  handleSelectChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const selectedId = event.target.value;
     this.setState({
       selectedId
@@ -51,16 +77,12 @@ class App extends Component {
           selectedId={this.state.selectedId}
           onSelectChange={this.handleSelectChange}
           onCheckboxChange={this.handleCheckboxChange}
-          isOriginal={this.state.isOriginal}
-          isHd={this.state.isHd}
-          isDownsized={this.state.isDownsized}
+          {...this.state.checkboxes}
         />
         <Main
           selectedId={this.state.selectedId}
           idsToData={this.state.idsToData}
-          isOriginal={this.state.isOriginal}
-          isHd={this.state.isHd}
-          isDownsized={this.state.isDownsized}
+          {...this.state.checkboxes}
         />
       </div>
     );
