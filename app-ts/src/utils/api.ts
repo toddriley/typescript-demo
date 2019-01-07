@@ -1,5 +1,5 @@
 interface ApiResponse {
-  data: ApiData;
+  data: ApiData[];
   // There are other fields we don't care about for this example
 }
 
@@ -16,9 +16,9 @@ interface ApiImage {
   // There are other fields we don't care about for this example
 }
 
-export const getGif = (id: string): Promise<ApiData> => {
+export const getGif = (id: string): Promise<ApiData[]> => {
   // Promise is a generic type.
-  return new Promise<ApiData>((resolve, reject) => {
+  return new Promise<ApiData[]>((resolve, reject) => {
     const api_key = "FmXifh05pC4El6o7XNyCHmiUvwX8Q6Y8";
     const endpoint = `https://api.giphy.com/v1/gifs?api_key=${api_key}
 	&ids=${id}`;
