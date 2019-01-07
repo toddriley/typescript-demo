@@ -12,7 +12,7 @@ interface AppState {
     isHd: boolean;
     isDownsized: boolean;
   };
-  idsToData: { [key: string]: ApiData };
+  idsToData: { [key: string]: ApiData[] };
 }
 class App extends React.Component<AppProps, AppState> {
   constructor(props: AppProps) {
@@ -37,10 +37,23 @@ class App extends React.Component<AppProps, AppState> {
 
       /**
        * This is a tricky one. `value` is a boolean, but our state contains non-booleans
-       * such as `selectedId` and `idsToData`. If we group together all of our boolean
-       * state variables into a new sub-object (`checkboxes` in this case) that cannot
-       * contain non-booleans, then we can make the TypeScript compiler happy using
-       * this index-signature syntax.
+       * such as `selectedId` and `idsToData`. If we try:
+       *
+       * ```
+       *
+       * this.setState({
+       *   [name]: value
+       * });
+       *
+       * ```
+       *
+       * it will not compile.
+       *
+       * To get around this we can group together all of our boolean state variables
+       * into a new sub-object (`checkboxes` in this case) that must contain
+       * only booleans, then we can make the TypeScript compiler happy using this
+       * index-signature syntax. There are many different ways to do this that
+       * are easier to write, but this particular method reads nicely.
        */
       this.setState({
         checkboxes: {
