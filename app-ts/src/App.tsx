@@ -1,7 +1,7 @@
 import * as React from "react";
 import Main from "./components/Main";
 import Sidebar from "./components/Sidebar";
-import { getGif } from "./utils/api";
+import { ApiData, getGif } from "./utils/api";
 import "./App.css";
 
 interface AppProps {}
@@ -12,7 +12,7 @@ interface AppState {
     isHd: boolean;
     isDownsized: boolean;
   };
-  idsToData: any;
+  idsToData: { [key: string]: ApiData };
 }
 class App extends React.Component<AppProps, AppState> {
   constructor(props: AppProps) {
