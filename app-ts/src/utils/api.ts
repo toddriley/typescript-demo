@@ -4,7 +4,12 @@ interface ApiResponse {
 }
 
 export interface ApiData {
-  images: ApiImage[];
+  images: {
+    original: ApiImage;
+    downsized: ApiImage;
+    hd?: ApiImage;
+    // There are other fields we don't care about for this example
+  };
   // There are other fields we don't care about for this example
 }
 
