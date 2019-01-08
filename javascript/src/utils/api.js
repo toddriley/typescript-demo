@@ -1,6 +1,8 @@
+const GIPHY_API_KEY = "YOUR_API_KEY_GOES_HERE";
+
 export const getGif = id => {
   return new Promise((resolve, reject) => {
-    const api_key = "FmXifh05pC4El6o7XNyCHmiUvwX8Q6Y8";
+    const api_key = GIPHY_API_KEY;
     const endpoint = `https://api.giphy.com/v1/gifs?api_key=${api_key}
 	&ids=${id}`;
     const options = {
