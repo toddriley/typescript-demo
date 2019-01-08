@@ -1,3 +1,14 @@
+const GIPHY_API_KEY = "YOUR_API_KEY_GOES_HERE";
+
+/**
+ * In this example `response.data.images.hd` is an optional object.
+ * We know that this object is sometimes undefined in the data
+ * returned by the API. We don't do it in this example, but it is
+ * often a good idea to make every field of every object on a JSON
+ * API response optional in our type definitions. This will ensure
+ * that our front-end code will not crash if the server returns
+ * undefined when we expected an object.
+ */
 interface ApiResponse {
   data: ApiData[];
   // There are other fields we don't care about for this example
@@ -24,7 +35,7 @@ interface ApiImage {
 export const getGif = (id: string): Promise<ApiData[]> => {
   // Promise is a generic type.
   return new Promise<ApiData[]>((resolve, reject) => {
-    const api_key = "FmXifh05pC4El6o7XNyCHmiUvwX8Q6Y8";
+    const api_key = GIPHY_API_KEY;
     const endpoint = `https://api.giphy.com/v1/gifs?api_key=${api_key}
 	&ids=${id}`;
     const options = {
