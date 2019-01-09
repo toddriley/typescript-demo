@@ -1,4 +1,24 @@
+/**
+ * For a deep dive into module resolution see https://www.typescriptlang.org/docs/handbook/modules.html
+ * tl;dr: replace the import statement with `import * as React from "react"`
+ */
 import React from "react";
+
+/**
+ *
+ * props.idsToData is an object where the key is the id and the value is the Gif data object e.g.
+ *
+ * const idsToData = {
+ *   "idNumber1": {
+ *     ...gif1
+ *   },
+ *   "idNumber2": {
+ *     ...gif1
+ *   },
+ *   ...etc
+ * }
+ *
+ */
 
 const Main = props => {
   const gifs = [];

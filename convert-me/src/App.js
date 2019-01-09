@@ -12,7 +12,7 @@ class App extends Component {
       isOriginal: false,
       isHd: false,
       isDownsized: false,
-      idsToData: {}
+      idsToData: {} // See Main.js for a description of this object
     };
   }
   handleCheckboxChange = event => {
