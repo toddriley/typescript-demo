@@ -18,6 +18,7 @@ import React from "react";
  *   ...etc
  * }
  *
+ *  Access a gif's data by it's id by calling `props.idsToData[gifId]`
  */
 
 const Main = props => {
