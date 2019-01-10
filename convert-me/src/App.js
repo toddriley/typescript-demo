@@ -47,21 +47,26 @@ class App extends Component {
   render() {
     return (
       <div className="app">
-        <Sidebar
-          selectedId={this.state.selectedId}
-          onSelectChange={this.handleSelectChange}
-          onCheckboxChange={this.handleCheckboxChange}
-          isOriginal={this.state.isOriginal}
-          isHd={this.state.isHd}
-          isDownsized={this.state.isDownsized}
-        />
-        <Main
-          selectedId={this.state.selectedId}
-          idsToData={this.state.idsToData}
-          isOriginal={this.state.isOriginal}
-          isHd={this.state.isHd}
-          isDownsized={this.state.isDownsized}
-        />
+        <header className="primary-header">
+          <h1>Giphy API Tester</h1>
+        </header>
+        <div className="primary-content">
+          <Sidebar
+            selectedId={this.state.selectedId}
+            onSelectChange={this.handleSelectChange}
+            onCheckboxChange={this.handleCheckboxChange}
+            isOriginal={this.state.isOriginal}
+            isHd={this.state.isHd}
+            isDownsized={this.state.isDownsized}
+          />
+          <Main
+            selectedId={this.state.selectedId}
+            idsToData={this.state.idsToData}
+            isOriginal={this.state.isOriginal}
+            isHd={this.state.isHd}
+            isDownsized={this.state.isDownsized}
+          />
+        </div>
       </div>
     );
   }
