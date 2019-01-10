@@ -87,7 +87,7 @@ class App extends React.Component<AppProps, AppState> {
     return (
       <div className="app">
         <header className="primary-header">
-          <h1>Giphy API Tester</h1>
+          <h1>GIPHY API Tester</h1>
         </header>
         <div className="primary-content">
           <Sidebar
