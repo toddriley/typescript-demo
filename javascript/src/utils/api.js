@@ -1,4 +1,4 @@
-const GIPHY_API_KEY = "YOUR_API_KEY_GOES_HERE";
+const GIPHY_API_KEY = "FmXifh05pC4El6o7XNyCHmiUvwX8Q6Y8";
 
 export const getGif = id => {
   return new Promise((resolve, reject) => {

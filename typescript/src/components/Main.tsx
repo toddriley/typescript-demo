@@ -41,17 +41,24 @@ const Main = (props: MainProps) => {
     }
   }
   return (
-    <div className="main">
-      <h1>Total size: {totalSize}</h1>
-      {gifs.map(gif => {
-        return (
-          <div key={gif.key}>
-            <img src={gif.url} alt={gif.url} />
-            <p>{gif.size}</p>
-          </div>
-        );
-      })}
-    </div>
+    <main className="main">
+      <div className="gif-wrapper">
+        {gifs.map(gif => {
+          return (
+            <figure className="gif" key={gif.key}>
+              <img src={gif.url} alt={gif.url} />
+              <figcaption>
+                <span>Size:</span> {gif.size}
+              </figcaption>
+            </figure>
+          );
+        })}
+      </div>
+      <div className="total-counter">
+        <h2 className="total-counter__label">Total size:</h2>
+        <span className="total-counter__value">{totalSize}</span>
+      </div>
+    </main>
   );
 };
 

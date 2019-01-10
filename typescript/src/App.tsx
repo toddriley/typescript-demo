@@ -86,17 +86,22 @@ class App extends React.Component<AppProps, AppState> {
   render() {
     return (
       <div className="app">
-        <Sidebar
-          selectedId={this.state.selectedId}
-          onSelectChange={this.handleSelectChange}
-          onCheckboxChange={this.handleCheckboxChange}
-          {...this.state.checkboxes}
-        />
-        <Main
-          selectedId={this.state.selectedId}
-          idsToData={this.state.idsToData}
-          {...this.state.checkboxes}
-        />
+        <header className="primary-header">
+          <h1>Giphy API Tester</h1>
+        </header>
+        <div className="primary-content">
+          <Sidebar
+            selectedId={this.state.selectedId}
+            onSelectChange={this.handleSelectChange}
+            onCheckboxChange={this.handleCheckboxChange}
+            {...this.state.checkboxes}
+          />
+          <Main
+            selectedId={this.state.selectedId}
+            idsToData={this.state.idsToData}
+            {...this.state.checkboxes}
+          />
+        </div>
       </div>
     );
   }
