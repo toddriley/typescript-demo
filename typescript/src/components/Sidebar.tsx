@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 import { gifIds } from "../utils/gifs";
 import Select from "./Select";
 import Checkbox from "./Checkbox";
@@ -13,15 +13,16 @@ interface SidebarProps {
 }
 const Sidebar = (props: SidebarProps) => {
   return (
-    <div className="sidebar">
-      <h1>Giphy API Tester</h1>
-      <Select
-        slug="gifs"
-        name="Gif"
-        gifs={gifIds}
-        value={props.selectedId}
-        onChange={props.onSelectChange}
-      />
+    <aside className="sidebar">
+      <div className="select__wrapper">
+        <Select
+          slug="gifs"
+          name="Gif"
+          gifs={gifIds}
+          value={props.selectedId}
+          onChange={props.onSelectChange}
+        />
+      </div>
       <div className="checkbox__wrapper">
         <label>Quality:</label>
         <Checkbox
@@ -43,7 +44,7 @@ const Sidebar = (props: SidebarProps) => {
           onChange={props.onCheckboxChange}
         />
       </div>
-    </div>
+    </aside>
   );
 };
 

@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 
 interface Gif {
   id: string;
@@ -15,25 +15,28 @@ interface SelectProps {
 
 const Select = (props: SelectProps) => {
   return (
-    <div className="select__wrapper">
+    <React.Fragment>
       <label className="select__label" htmlFor={props.slug}>
         Choose a {props.name}:
       </label>
-      <select
-        id={props.slug}
-        value={props.value}
-        onChange={props.onChange}
-        className="select__input"
-      >
-        {props.gifs.map(gif => {
-          return (
-            <option key={gif.id} value={gif.id}>
-              {gif.name}
-            </option>
-          );
-        })}
-      </select>
-    </div>
+      <div className="select">
+        <select
+          id={props.slug}
+          value={props.value}
+          onChange={props.onChange}
+          className="select__input"
+        >
+          {props.gifs.map(gif => {
+            console.log(gif);
+            return (
+              <option key={gif.id} value={gif.id}>
+                {gif.name}
+              </option>
+            );
+          })}
+        </select>
+      </div>
+    </React.Fragment>
   );
 };
 
