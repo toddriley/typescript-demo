@@ -9,12 +9,12 @@ import React from "react";
  * props.idsToData is an object where the key is the id and the value is the Gif data object e.g.
  *
  * const idsToData = {
- *   "idNumber1": {
+ *   "idNumber1": {[
  *     ...gif1
- *   },
- *   "idNumber2": {
+ *   ]},
+ *   "idNumber2": {[
  *     ...gif1
- *   },
+ *   ]},
  *   ...etc
  * }
  *
