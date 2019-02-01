@@ -8,7 +8,7 @@ This demo is a simple React app that consists of a dropdown menu and several che
 
 It is expected that you do all of your work in the `convert-me/` directory. The `javascript` and `typescript` directories are included as a reference. For the steps below, it is assumed that you are inside `convert-me/`.
 
-1. Follow the steps in the (React docs)[https://facebook.github.io/create-react-app/docs/adding-typescript] to add TypeScript.
+1. Follow the steps in the [React docs](https://facebook.github.io/create-react-app/docs/adding-typescript) to add TypeScript.
 
 ```
 npm install --save typescript @types/node @types/react @types/react-dom
